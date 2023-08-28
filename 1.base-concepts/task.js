@@ -1,12 +1,12 @@
 "use strict"
 function solveEquation(a, b, c) {
-  const d = Math.pow(b,2) - 4*a*c;
+  const d = Math.pow(b,2) - 4 * a * c;
   if (d < 0) {
     return [];
   } else if (d === 0) {
-    return [-b/(2*a)];
+    return [-b / (2 * a)];
   } else {
-    return [(-b + Math.sqrt(d))/(2*a), (-b - Math.sqrt(d))/(2*a)];
+    return [(-b + Math.sqrt(d)) / (2 * a), (-b - Math.sqrt(d))/(2 * a)];
   }
 }
 
