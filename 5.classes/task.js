@@ -125,3 +125,37 @@ function myTest() {
 
     console.log(`Книгу вернули. Книг в библиотеке ${library.books.length}`);
 }
+
+class Student {
+    constructor(name) {
+        this.name = name;
+        this.marks = {};
+    }
+
+    addMark(mark, subject) {
+        if (mark < 2 || mark > 5) {
+            // невалидная оценка, пропускаем обработку
+            return;
+        }
+        if (!Object.keys(this.marks).includes(subject)) {
+            // массив оценок по предмету
+            this.marks[subject] = [];
+        }
+        this.marks[subject].push(mark);
+    }
+
+    getAverageBySubject(subject) {
+        if (!Object.keys(this.marks).includes(subject)) {
+            return 0;
+        }
+        return this.marks[subject].reduce((sum, mark) => sum + mark, 0) / this.marks[subject].length;
+    }
+
+    getAverage() {
+        const subjects = Object.keys(this.marks);
+        if (subjects.length === 0) {
+            return 0;
+        }
+        return subjects.reduce((sum, subject) => sum + this.getAverageBySubject(subject), 0) / subjects.length;
+    }
+}
